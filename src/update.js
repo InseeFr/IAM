@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import {
-	PageTitle,
 	Select,
 	Picker,
 	ReturnButton,
@@ -71,9 +69,8 @@ export class Update extends Component {
 		const { selectedRole, newAgents, toAdd, toDelete, options } = this.state;
 		return (
 			<div className="container">
-				<PageTitle title={D.authorizationTitle} />
 				<ActionToolbar>
-					<ReturnButton action="./" />
+					<ReturnButton action={() => this.props.handleBack()} />
 					<SaveButton
 						action={this.handleSave}
 						disabled={Object.keys({ ...toAdd, ...toDelete }).length === 0}
@@ -104,4 +101,4 @@ export class Update extends Component {
 	}
 }
 
-export default withRouter(Update);
+export default Update;

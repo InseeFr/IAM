@@ -13,8 +13,6 @@ const initState = {
 class Habilitation extends Component {
 	state = { ...initState };
 	addAgent = data => {
-		console.log('addAgent');
-
 		this.setState(() => ({
 			addRequested: true,
 		}));
@@ -79,8 +77,6 @@ class Habilitation extends Component {
 		const { addRequested, deleteRequested, roles, agents, update } = this.state;
 
 		if (deleteRequested || addRequested) return <Loading textType="saving" />;
-		console.log('hello');
-		console.log(this.handleUpdate);
 
 		if (roles && agents) {
 			return (

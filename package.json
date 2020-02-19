@@ -11,7 +11,8 @@
 		"build-storybook": "build-storybook -o built-storybook/storybook",
 		"start-storybook": "start-storybook -p 9999",
 		"test:coverage": "jest --coverage",
-		"lint": "eslint src"
+		"lint": "eslint src",
+		"prepublishOnly": "npm run test && npm run build"
 	},
 	"files": [
 		"dist/*"
@@ -25,11 +26,13 @@
 		"@babel/plugin-transform-react-jsx": "^7.3.0",
 		"@babel/preset-env": "^7.5.5",
 		"@storybook/addon-actions": "5.3.13",
+		"@storybook/addon-docs": "^5.3.13",
 		"@storybook/addon-knobs": "5.3.13",
 		"@storybook/addon-links": "5.3.13",
 		"@storybook/addons": "5.3.13",
 		"@storybook/react": "5.3.13",
-		"babel-loader": "8.0.6",
+		"babel-loader": "^8.0.6",
+		"bootstrap": "^3.4.1",
 		"enzyme": "^3.10.0",
 		"enzyme-adapter-react-16": "^1.14.0",
 		"eslint-config-prettier": "6.7.0",
@@ -39,7 +42,7 @@
 		"eslint-plugin-react": "7.17.0",
 		"jest": "25.1.0",
 		"microbundle": "^0.12.0-next.6",
-		"bootstrap": "^3.4.1"
+		"react-is": "^16.12.0"
 	},
 	"prettier": {
 		"bracketSpacing": true,
@@ -51,7 +54,7 @@
 	"dependencies": {
 		"@inseefr/wilco": "0.0.2-rc4",
 		"lodash": "^4.17.15",
-		"react": "16.8.6",
+		"react": "^16.12.0",
 		"react-dom": "16.8.6",
 		"react-router-dom": "5.1.2"
 	}

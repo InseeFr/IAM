@@ -6,10 +6,6 @@ import {
 } from '@inseefr/wilco';
 
 const dictionary = {
-	authorizationTitle: {
-		fr: 'Habilitations',
-		en: 'Authorizations',
-	},
 	pickedRolePlaceholder: {
 		fr: 'Sélectionner un rôle...',
 		en: 'Select a role...',

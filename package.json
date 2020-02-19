@@ -3,7 +3,12 @@
 	"version": "0.0.1-rc0",
 	"main": "dist/index.js",
 	"source": "src/index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/InseeFr/IAM"
+	},
 	"license": "MIT",
+	"author": "INSEE (http://www.insee.fr)",
 	"scripts": {
 		"start": "microbundle watch --target node --jsx React.createElement",
 		"build": "microbundle build --jsx React.createElement",
@@ -18,7 +23,7 @@
 		"dist/*"
 	],
 	"peerDependencies": {
-		"react": "16.8.6"
+		"react": "^16.12.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.5.5",

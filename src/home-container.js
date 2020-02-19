@@ -1,16 +1,13 @@
 import React, { Fragment, Component } from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
 import { Loading } from '@inseefr/wilco';
-import Menu from './menu';
 import Visualisation from './visualisation';
 import Update from './update';
-import { Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const initState = {
 	deleteRequested: false,
 	addRequested: false,
-	needRefresh: false,
+	update: false,
 };
 
 class Habilitation extends Component {
@@ -21,33 +18,34 @@ class Habilitation extends Component {
 		this.setState(() => ({
 			addRequested: true,
 		}));
-		this.props.addAgent(data).then(this.needRefresh, this.needRefresh);
+		this.props.addAgent(data);
 	};
 
-	needRefresh = () => {
-		this.setState(() => ({
-			...initState,
-			needRefresh: true,
-		}));
-	};
 	deleteAgent = data => {
-		console.log('deleteAgent');
-
 		this.setState(() => ({
 			deleteRequested: true,
 		}));
-		this.props.deleteAgent(data).then(this.needRefresh, this.needRefresh);
+		this.props.deleteAgent(data);
 	};
 
 	handleSave = data => {
 		const { toAdd, toDelete } = data;
-		if (toAdd.length !== 0) this.addAgent(toAdd);
-		if (toDelete.length !== 0) this.deleteAgent(toDelete);
+
+		const agentActions = [];
+		if (toAdd.length !== 0) agentActions.push(this.addAgent(toAdd));
+		if (toDelete.length !== 0) agentActions.push(this.deleteAgent(toDelete));
+		Promise.all(agentActions).then(() => {
+			this.setState({
+				deleteRequested: false,
+				addRequested: false,
+				update: false,
+			});
+			this.loadAgentList();
+			this.loadAgentList();
+		});
 	};
 
 	loadAgentList = () => {
-		console.log('loadAgentList');
-
 		this.props.loadAgentList().then(agents =>
 			this.setState(() => ({
 				agents,
@@ -56,7 +54,6 @@ class Habilitation extends Component {
 	};
 
 	loadRoleList = () => {
-		console.log('loadRoleList');
 		this.props.loadRoleList().then(roles =>
 			this.setState(() => ({
 				roles,
@@ -72,44 +69,37 @@ class Habilitation extends Component {
 		}
 	}
 
-	componentWillReceiveProps(nextProps) {
-		if (this.props.location.pathname !== nextProps.location.pathname) {
-			this.setState({ ...initState });
-			this.loadRoleList();
-		}
-	}
+	handleUpdate = () => {
+		this.setState({
+			update: true,
+		});
+	};
 
-	componentDidMount() {
-		document.getElementById('root-app').classList = ['bauhaus-app'];
-	}
 	render() {
-		const {
-			addRequested,
-			deleteRequested,
-			roles,
-			agents,
-			needRefresh,
-		} = this.state;
+		const { addRequested, deleteRequested, roles, agents, update } = this.state;
 
 		if (deleteRequested || addRequested) return <Loading textType="saving" />;
+		console.log('hello');
+		console.log(this.handleUpdate);
 
-		if (needRefresh) return <Redirect to="/habilitation" />;
 		if (roles && agents) {
 			return (
 				<Fragment>
-					<Menu></Menu>
-					<Switch>
-						<Route path={this.props.match.path + '/update'}>
-							<Update
-								roles={roles}
-								agents={agents}
-								handleSave={this.handleSave}
-							/>
-						</Route>
-						<Route path="">
-							<Visualisation roles={roles} />
-						</Route>
-					</Switch>
+					{update && (
+						<Update
+							roles={roles}
+							agents={agents}
+							handleSave={this.handleSave}
+							handleBack={() => this.setState({ update: false })}
+						/>
+					)}
+					{!update && (
+						<Visualisation
+							roles={roles}
+							handleUpdate={this.handleUpdate}
+							handleBack={this.props.handleBack}
+						/>
+					)}
 				</Fragment>
 			);
 		}
@@ -130,4 +120,4 @@ Habilitation.defaultProps = {
 	deleteAgent: () => Promise.resolve(),
 	addAgent: () => Promise.resolve(),
 };
-export default withRouter(Habilitation);
+export default Habilitation;

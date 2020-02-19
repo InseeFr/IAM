@@ -10,11 +10,11 @@
 	"license": "MIT",
 	"author": "INSEE (http://www.insee.fr)",
 	"scripts": {
-		"start": "microbundle watch --target node --jsx React.createElement",
-		"build": "microbundle build --jsx React.createElement",
-		"test": "jest --watch",
-		"build-storybook": "build-storybook -o built-storybook/storybook",
+		"build": "rollup -c rollup.config.js",
 		"start-storybook": "start-storybook -p 9999",
+		"build-storybook": "build-storybook -o built-storybook/storybook",
+		"test": "jest",
+		"test-watch": "jest --watch",
 		"test:coverage": "jest --coverage",
 		"lint": "eslint src",
 		"prepublishOnly": "npm run test && npm run build"
@@ -28,6 +28,7 @@
 	"devDependencies": {
 		"@babel/core": "^7.5.5",
 		"@babel/plugin-proposal-class-properties": "^7.5.5",
+		"@babel/plugin-transform-modules-commonjs": "^7.8.3",
 		"@babel/plugin-transform-react-jsx": "^7.3.0",
 		"@babel/preset-env": "^7.5.5",
 		"@storybook/addon-actions": "5.3.13",
@@ -47,7 +48,34 @@
 		"eslint-plugin-react": "7.17.0",
 		"jest": "25.1.0",
 		"microbundle": "^0.12.0-next.6",
-		"react-is": "^16.12.0"
+		"react-is": "^16.12.0",
+		"rollup": "^1.31.1",
+		"rollup-plugin-babel": "^4.3.3",
+		"rollup-plugin-commonjs": "^10.1.0",
+		"rollup-plugin-node-builtins": "^2.1.2",
+		"rollup-plugin-node-resolve": "^5.2.0",
+		"rollup-plugin-postcss": "^2.0.6",
+		"rollup-plugin-replace": "^2.2.0"
+	},
+	"dependencies": {
+		"@inseefr/wilco": "^0.0.2-rc5",
+		"lodash": "^4.17.15",
+		"react-router-dom": "5.1.2"
+	},
+	"jest": {
+		"collectCoverageFrom": [
+			"src/**/*.{js,jsx}",
+			"!src/**/*.stories.js"
+		],
+		"moduleNameMapper": {
+			"^.+\\.(css|less|scss)$": "identity-obj-proxy"
+		},
+		"transform": {
+			"^.+\\.js$": "babel-jest"
+		},
+		"setupFilesAfterEnv": [
+			"<rootDir>/src/setup-test.js"
+		]
 	},
 	"prettier": {
 		"bracketSpacing": true,
@@ -55,12 +83,5 @@
 		"singleQuote": true,
 		"trailingComma": "es5",
 		"useTabs": true
-	},
-	"dependencies": {
-		"@inseefr/wilco": "0.0.2-rc4",
-		"lodash": "^4.17.15",
-		"react": "^16.12.0",
-		"react-dom": "16.8.6",
-		"react-router-dom": "5.1.2"
 	}
 }

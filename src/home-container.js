@@ -36,30 +36,29 @@ class Habilitation extends Component {
 		if (toDelete.length !== 0)
 			agentActions = [...agentActions, ...this.deleteAgent(toDelete)];
 		Promise.all(agentActions).then(() => {
-			this.setState({
-				deleteRequested: false,
-				addRequested: false,
-				update: false,
-			});
-			this.loadRoleList();
+			this.loadRoleList().then(() =>
+				this.setState({
+					deleteRequested: false,
+					addRequested: false,
+					update: false,
+				})
+			);
 		});
 	};
 
-	loadAgentList = () => {
+	loadAgentList = () =>
 		this.props.loadAgentList().then(agents =>
 			this.setState(() => ({
 				agents,
 			}))
 		);
-	};
 
-	loadRoleList = () => {
+	loadRoleList = () =>
 		this.props.loadRoleList().then(roles =>
 			this.setState(() => ({
 				roles,
 			}))
 		);
-	};
 
 	componentDidMount() {
 		if (!this.state.roles) {
@@ -77,6 +76,7 @@ class Habilitation extends Component {
 	};
 
 	render() {
+		console.log('new version');
 		const { addRequested, deleteRequested, roles, agents, update } = this.state;
 
 		if (deleteRequested || addRequested) return <Loading textType="saving" />;

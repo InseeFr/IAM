@@ -6,3 +6,18 @@ export const transformRoleFromIgesa = (array = []) =>
 				persons: persons.map(({ cn: label, uid: id }) => ({ id, label })),
 		  }))
 		: [];
+
+export const transformASIFromIgesa = (label = 'ASI group label') => (
+	array = []
+) => {
+	if (array.length !== 1) return [];
+	const { cn, personnes } = array[0];
+	const persons = personnes.map(({ cn: label, uid: id }) => ({ id, label }));
+	return [
+		{
+			id: cn,
+			label,
+			persons,
+		},
+	];
+};

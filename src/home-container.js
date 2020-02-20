@@ -1,8 +1,9 @@
 import React, { Fragment, Component } from 'react';
 import { Loading } from '@inseefr/wilco';
+import PropTypes from 'prop-types';
 import Visualisation from './visualisation';
 import Update from './update';
-import PropTypes from 'prop-types';
+import { extractIdRole } from './utils/agents';
 
 const initState = {
 	deleteRequested: false,
@@ -12,26 +13,28 @@ const initState = {
 
 class Habilitation extends Component {
 	state = { ...initState };
-	addAgent = data => {
+	addAgent = agents => {
 		this.setState(() => ({
 			addRequested: true,
 		}));
-		this.props.addAgent(data);
+		return extractIdRole(agents).map(a => this.props.addAgent(a));
 	};
 
-	deleteAgent = data => {
+	deleteAgent = agents => {
 		this.setState(() => ({
 			deleteRequested: true,
 		}));
-		this.props.deleteAgent(data);
+		return agents.map(a => this.props.deleteAgent(a));
 	};
 
 	handleSave = data => {
 		const { toAdd, toDelete } = data;
 
-		const agentActions = [];
-		if (toAdd.length !== 0) agentActions.push(this.addAgent(toAdd));
-		if (toDelete.length !== 0) agentActions.push(this.deleteAgent(toDelete));
+		let agentActions = [];
+		if (toAdd.length !== 0)
+			agentActions = [...agentActions, ...this.addAgent(toAdd)];
+		if (toDelete.length !== 0)
+			agentActions = [...agentActions, ...this.deleteAgent(toDelete)];
 		Promise.all(agentActions).then(() => {
 			this.setState({
 				deleteRequested: false,

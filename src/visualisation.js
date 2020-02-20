@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-	TableRmes,
+	Table,
 	PageTitle,
 	UpdateButton,
 	ReturnButton,
@@ -82,7 +82,7 @@ function VisualisationTable({ roles = [], handleBack, handleUpdate }) {
 
 				{handleUpdate && <UpdateButton action={() => handleUpdate()} />}
 			</ActionToolbar>
-			<TableRmes
+			<Table
 				rowParams={rowParams}
 				data={data}
 				search={true}

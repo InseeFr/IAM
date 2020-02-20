@@ -1,5 +1,4 @@
-import React from 'react';
-import { transformRoleFromIgesa } from './transform';
+import { transformRoleFromIgesa, transformASIFromIgesa } from './transform';
 
 describe('transformRoleFromIgesa', () => {
 	it('should return an empty array if we have no data', () => {
@@ -38,6 +37,24 @@ describe('transformRoleFromIgesa', () => {
 						label: 'CN4',
 					},
 				],
+			},
+		]);
+	});
+});
+
+const ASI = [{ cn: 'id ASI group', personnes: [{ cn: 'Sir', uid: '1' }] }];
+
+describe('transformASIFromIgesa', () => {
+	it('should return an empty array if we have no data', () => {
+		expect(transformASIFromIgesa()()).toEqual([]);
+	});
+
+	it('should return the right structure', () => {
+		expect(transformASIFromIgesa()(ASI)).toEqual([
+			{
+				id: 'id ASI group',
+				label: 'ASI group label',
+				persons: [{ label: 'Sir', id: '1' }],
 			},
 		]);
 	});

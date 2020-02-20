@@ -41,8 +41,7 @@ class Habilitation extends Component {
 				addRequested: false,
 				update: false,
 			});
-			this.loadAgentList();
-			this.loadAgentList();
+			this.loadRoleList();
 		});
 	};
 
@@ -61,7 +60,8 @@ class Habilitation extends Component {
 			}))
 		);
 	};
-	componentWillMount() {
+
+	componentDidMount() {
 		if (!this.state.roles) {
 			this.loadRoleList();
 		}

@@ -76,7 +76,6 @@ class Habilitation extends Component {
 	};
 
 	render() {
-		console.log('new version');
 		const { addRequested, deleteRequested, roles, agents, update } = this.state;
 
 		if (deleteRequested || addRequested) return <Loading textType="saving" />;

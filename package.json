@@ -15,7 +15,8 @@
 		"build-storybook": "build-storybook -o built-storybook/storybook",
 		"test": "jest",
 		"test-watch": "jest --watch",
-		"test:coverage": "jest --coverage",
+		"test-coverage": "jest --coverage",
+		"coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
 		"lint": "eslint src",
 		"prepublishOnly": "npm run test && npm run build"
 	},
@@ -39,6 +40,7 @@
 		"@storybook/react": "5.3.13",
 		"babel-loader": "^8.0.6",
 		"bootstrap": "^3.4.1",
+		"coveralls": "^3.0.9",
 		"enzyme": "^3.10.0",
 		"enzyme-adapter-react-16": "^1.14.0",
 		"eslint-config-prettier": "6.7.0",

@@ -11,6 +11,7 @@ const Habilitation = ({
 	loadRoleList,
 	loadAgentList,
 	handleBack,
+	displayUpdateBtn,
 }) => {
 	const [agents, setAgents] = useState([]);
 	const [roles, setRoles] = useState([]);
@@ -68,6 +69,7 @@ const Habilitation = ({
 						roles={roles}
 						handleUpdate={() => setUpdate(true)}
 						handleBack={handleBack}
+						displayUpdateBtn={displayUpdateBtn}
 					/>
 				)}
 			</>
@@ -82,6 +84,7 @@ Habilitation.propTypes = {
 	deleteAgent: PropTypes.func.isRequired,
 	addAgent: PropTypes.func.isRequired,
 	handleBack: PropTypes.func,
+	displayUpdateBtn: PropTypes.bool,
 };
 
 Habilitation.defaultProps = {
@@ -89,5 +92,6 @@ Habilitation.defaultProps = {
 	loadRoleList: () => Promise.resolve(),
 	deleteAgent: () => Promise.resolve(),
 	addAgent: () => Promise.resolve(),
+	displayUpdateBtn: true,
 };
 export default Habilitation;

@@ -41,7 +41,12 @@ function RolesPicker({ roles = [], person = {}, defaultOpen = false }) {
 	);
 }
 
-function VisualisationTable({ roles = [], handleBack, handleUpdate }) {
+function VisualisationTable({
+	roles = [],
+	handleBack,
+	handleUpdate,
+	displayUpdateBtn = true,
+}) {
 	let persons = {};
 
 	for (let i = 0; i < roles.length; i++) {
@@ -76,10 +81,10 @@ function VisualisationTable({ roles = [], handleBack, handleUpdate }) {
 	return (
 		<div className="container">
 			<ActionToolbar>
-				{handleBack && <ReturnButton action={() => handleBack()} />}
-				{!handleBack && <div />}
-
-				{handleUpdate && <UpdateButton action={() => handleUpdate()} />}
+				{handleBack ? <ReturnButton action={() => handleBack()} /> : <div />}
+				{displayUpdateBtn && handleUpdate && (
+					<UpdateButton action={() => handleUpdate()} />
+				)}
 			</ActionToolbar>
 			<Table
 				rowParams={rowParams}

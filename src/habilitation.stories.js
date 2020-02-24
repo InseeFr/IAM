@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
+import { boolean } from '@storybook/addon-knobs';
 import Habilitation from './home-container';
 import { MemoryRouter } from 'react-router-dom';
 
@@ -84,7 +84,11 @@ const loadRoleList = () =>
 	]);
 stories.add('Default', () => (
 	<MemoryRouter>
-		<Habilitation loadRoleList={loadRoleList} loadAgentList={loadAgentList} />
+		<Habilitation
+			loadRoleList={loadRoleList}
+			loadAgentList={loadAgentList}
+			displayUpdateBtn={boolean('Display update button', true)}
+		/>
 	</MemoryRouter>
 ));
 
@@ -94,6 +98,7 @@ stories.add('WithHandleBack', () => (
 			loadRoleList={loadRoleList}
 			loadAgentList={loadAgentList}
 			handleBack={() => alert('handleBack')}
+			displayUpdateBtn={boolean('Display update button', true)}
 		/>
 	</MemoryRouter>
 ));

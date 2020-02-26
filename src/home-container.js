@@ -48,17 +48,11 @@ const Habilitation = ({
 	};
 
 	useEffect(() => {
-		setTimeout(
-			() =>
-				Promise.all([loadRoleList(), loadAgentList()]).then(
-					([roles, agents]) => {
-						setRoles(roles);
-						setAgents(agents);
-						setLoading(false);
-					}
-				),
-			2000
-		);
+		Promise.all([loadRoleList(), loadAgentList()]).then(([roles, agents]) => {
+			setRoles(roles);
+			setAgents(agents);
+			setLoading(false);
+		})
 	}, []);
 
 	if (loading) return <Loading />;

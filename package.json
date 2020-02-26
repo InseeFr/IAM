@@ -59,7 +59,7 @@
 		"rollup-plugin-replace": "^2.2.0"
 	},
 	"dependencies": {
-		"@inseefr/wilco": "^0.0.2-rc9",
+		"@inseefr/wilco": "^0.0.2-rc10",
 		"lodash": "^4.17.15",
 		"react-router-dom": "5.1.2"
 	},

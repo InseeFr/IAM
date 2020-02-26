@@ -16,7 +16,7 @@ const dictionary = {
 	},
 	stampTitle: {
 		fr: 'Timbre',
-		en: 'Stamp',
+		en: 'Unit',
 	},
 	roleTitle: {
 		fr: 'Rôle',

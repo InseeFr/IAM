@@ -14,9 +14,9 @@ describe('transformRoleFromIgesa', () => {
 							cn: '1',
 							description: 'label1',
 							personnes: [
-								{ uid: '2', cn: 'CN1' },
-								{ uid: '3', cn: 'CN3' },
-								{ uid: '3', cn: 'CN4' },
+								{ uid: '1', cn: 'CN1', ou: 'stamp1' },
+								{ uid: '2', cn: 'CN2', ou: 'stamp2' },
+								{ uid: '3', cn: 'CN3', ou: 'stamp3' },
 							],
 						},
 					],
@@ -27,14 +27,16 @@ describe('transformRoleFromIgesa', () => {
 				id: '1',
 				label: 'label1',
 				persons: [
-					{ id: '2', label: 'CN1' },
+					{ id: '1', label: 'CN1', stamp: 'stamp1' },
 					{
-						id: '3',
-						label: 'CN3',
+						id: '2',
+						label: 'CN2',
+						stamp: 'stamp2',
 					},
 					{
 						id: '3',
-						label: 'CN4',
+						label: 'CN3',
+						stamp: 'stamp3',
 					},
 				],
 			},
@@ -42,7 +44,9 @@ describe('transformRoleFromIgesa', () => {
 	});
 });
 
-const ASI = [{ cn: 'id ASI group', personnes: [{ cn: 'Sir', uid: '1' }] }];
+const ASI = [
+	{ cn: 'id ASI group', personnes: [{ cn: 'Sir', uid: '1', ou: 'stamp1' }] },
+];
 
 describe('transformASIFromIgesa', () => {
 	it('should return an empty array if we have no data', () => {
@@ -54,7 +58,7 @@ describe('transformASIFromIgesa', () => {
 			{
 				id: 'id ASI group',
 				label: 'ASI group label',
-				persons: [{ label: 'Sir', id: '1' }],
+				persons: [{ label: 'Sir', id: '1', stamp: 'stamp1' }],
 			},
 		]);
 	});

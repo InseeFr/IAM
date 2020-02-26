@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/iam",
-	"version": "0.0.1-rc6",
+	"version": "0.0.1-rc7",
 	"main": "dist/index.js",
 	"source": "src/index.js",
 	"repository": {

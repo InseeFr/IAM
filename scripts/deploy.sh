@@ -2,7 +2,7 @@
 
 set -e
 
-STORYBOOK_FOLDER="built-storybook"
+STORYBOOK_FOLDER="built-storybook/storybook"
 SITE_FOLDER="website"
 
 MAIN_BRANCH="master"

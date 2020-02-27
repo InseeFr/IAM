@@ -84,7 +84,15 @@ const Habilitation = ({
 };
 
 Habilitation.propTypes = {
+	/**
+	  Function returin a Promise. When this promise 
+	  is resolved, will return the list of agents.
+    */
 	loadAgentList: PropTypes.func.isRequired,
+	/**
+	  Function returin a Promise. When this promise 
+	  is resolved, will return the list of roles.
+    */
 	loadRoleList: PropTypes.func.isRequired,
 	deleteAgent: PropTypes.func.isRequired,
 	addAgent: PropTypes.func.isRequired,

@@ -1,10 +1,7 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { boolean } from '@storybook/addon-knobs';
-import Habilitation from './home-container';
+import Habilitation from '../src/home-container';
 import { MemoryRouter } from 'react-router-dom';
-
-const stories = storiesOf('Visualisation', module);
+import { boolean } from '@storybook/addon-knobs';
 
 const loadAgentList = () =>
 	Promise.resolve([
@@ -82,7 +79,14 @@ const loadRoleList = () =>
 			label: 'user',
 		},
 	]);
-stories.add('Default', () => (
+
+export default {
+	title: 'Component/Habilitation',
+	component: Habilitation,
+	includeStories: [],
+};
+
+export const basic = () => (
 	<MemoryRouter>
 		<Habilitation
 			loadRoleList={loadRoleList}
@@ -90,9 +94,13 @@ stories.add('Default', () => (
 			displayUpdateBtn={boolean('Display update button', true)}
 		/>
 	</MemoryRouter>
-));
+);
 
-stories.add('WithHandleBack', () => (
+basic.story = {
+	title: 'Default',
+};
+
+export const WithHandleBack = () => (
 	<MemoryRouter>
 		<Habilitation
 			loadRoleList={loadRoleList}
@@ -101,4 +109,8 @@ stories.add('WithHandleBack', () => (
 			displayUpdateBtn={boolean('Display update button', true)}
 		/>
 	</MemoryRouter>
-));
+);
+
+WithHandleBack.story = {
+	title: 'WithHandleBack',
+};

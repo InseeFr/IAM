@@ -1,0 +1,18 @@
+import { Meta, Story, Props } from '@storybook/addon-docs/blocks';
+import * as stories from './1-Habilitation.stories.js';
+import Habilitation from '../src/home-container';
+import { Fragment } from 'react';
+
+<Meta title={stories.default.title} component={stories.default.component} />
+
+# Habilitation
+
+This component should be used if you need to manage the role of your users
+
+<Props of={Habilitation} />
+
+<Story name="Default">{stories.basic()}</Story>
+
+You also can add a `back` button and define the code that should be executed thanks to the `handleBack` prop
+
+<Story name="WithHandleBack">{stories.WithHandleBack()}</Story>

@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/iam",
-	"version": "0.0.1-rc5",
+	"version": "0.0.1-rc7",
 	"main": "dist/index.js",
 	"source": "src/index.js",
 	"repository": {
@@ -36,6 +36,7 @@
 		"@storybook/addon-docs": "^5.3.14",
 		"@storybook/addon-links": "^5.3.14",
 		"@storybook/addons": "^5.3.14",
+    "@storybook/addon-knobs": "^5.3.14",
 		"@storybook/react": "^5.3.14",
 		"babel-loader": "^8.0.6",
 		"bootstrap": "^3.4.1",
@@ -59,8 +60,7 @@
 		"rollup-plugin-replace": "^2.2.0"
 	},
 	"dependencies": {
-		"@inseefr/wilco": "^0.0.2-rc9",
-		"@storybook/addon-knobs": "^5.3.14",
+		"@inseefr/wilco": "^0.0.2-rc10",
 		"lodash": "^4.17.15",
 		"react-router-dom": "5.1.2"
 	},

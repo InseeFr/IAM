@@ -15,6 +15,7 @@ const Habilitation = ({
 }) => {
 	const [agents, setAgents] = useState([]);
 	const [roles, setRoles] = useState([]);
+	const [loading, setLoading] = useState(true);
 	const [deleteRequested, setDeleteRequested] = useState(false);
 	const [addRequested, setAddRequested] = useState(false);
 	const [update, setUpdate] = useState(false);
@@ -47,10 +48,14 @@ const Habilitation = ({
 	};
 
 	useEffect(() => {
-		loadRoleList().then(roles => setRoles(roles));
-		loadAgentList().then(agents => setAgents(agents));
+		Promise.all([loadRoleList(), loadAgentList()]).then(([roles, agents]) => {
+			setRoles(roles);
+			setAgents(agents);
+			setLoading(false);
+		})
 	}, []);
 
+	if (loading) return <Loading />;
 	if (deleteRequested || addRequested) return <Loading textType="saving" />;
 
 	if (roles && agents) {

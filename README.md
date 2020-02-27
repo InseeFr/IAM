@@ -7,4 +7,4 @@ Access management module
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=InseeFr_IAM&metric=alert_status)](https://sonarcloud.io/dashboard?id=InseeFr_IAM)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-[Storybook](https://inseefr.github.io/IAM/storybook) is available online.
+[Storybook](https://inseefr.github.io/IAM) is available online.

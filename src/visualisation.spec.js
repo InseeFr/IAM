@@ -1,39 +1,42 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import Visualisation from './visualisation';
-import { Table } from '@inseefr/wilco';
+import '@testing-library/jest-dom';
+import { render } from '@testing-library/react';
 
-const roles = [{ id: 'id', label: 'label', persons: [] }];
+const roles = [
+	{
+		id: '1',
+		label: 'label',
+		persons: [
+			{
+				id: '2',
+				label: 'plabel',
+				stamp: 'pstamp',
+			},
+		],
+	},
+];
 
 describe('administration-visualisation-roles', () => {
 	it('renders without crashing', () => {
-		shallow(<Visualisation roles={roles} />);
+		render(<Visualisation roles={roles} />);
 	});
 
 	it('should display a Table with the right data prop', () => {
-		const roles = [
-			{
-				label: 'label',
-				persons: [
-					{
-						label: 'plabel',
-						stamp: 'pstamp',
-					},
-				],
-			},
-		];
-		const container = shallow(<Visualisation roles={roles} />);
-		expect(container.find(Table).props().data).toEqual([
-			{
-				label: 'plabel',
-				roles: 'label',
-				stamp: 'pstamp',
-			},
-		]);
+		const { container } = render(<Visualisation roles={roles} />);
+		expect(container.querySelector('tbody td:nth-child(1)').innerHTML).toBe(
+			'plabel'
+		);
+		expect(container.querySelector('tbody td:nth-child(2)').innerHTML).toBe(
+			'pstamp'
+		);
+		expect(container.querySelector('tbody td:nth-child(3)').innerHTML).toBe(
+			'label'
+		);
 	});
 
 	it('should define an empty arry for roles when it is undefined', () => {
-		const container = shallow(<Visualisation />);
-		expect(container.find(Table).props().data).toEqual([]);
+		const { container } = render(<Visualisation roles={roles} />);
+		expect(container.querySelectorAll('tbody tr').length).toBe(1);
 	});
 });

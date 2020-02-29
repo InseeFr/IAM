@@ -34,15 +34,15 @@
 		"@babel/preset-env": "^7.5.5",
 		"@storybook/addon-actions": "^5.3.14",
 		"@storybook/addon-docs": "^5.3.14",
+		"@storybook/addon-knobs": "^5.3.14",
 		"@storybook/addon-links": "^5.3.14",
 		"@storybook/addons": "^5.3.14",
-    "@storybook/addon-knobs": "^5.3.14",
 		"@storybook/react": "^5.3.14",
+		"@testing-library/jest-dom": "^5.1.1",
+		"@testing-library/react": "^9.4.1",
 		"babel-loader": "^8.0.6",
 		"bootstrap": "^3.4.1",
 		"coveralls": "^3.0.9",
-		"enzyme": "^3.10.0",
-		"enzyme-adapter-react-16": "^1.14.0",
 		"eslint-config-prettier": "6.7.0",
 		"eslint-config-react-app": "5.1.0",
 		"eslint-plugin-import": "2.19.1",
@@ -75,9 +75,7 @@
 		"transform": {
 			"^.+\\.js$": "babel-jest"
 		},
-		"setupFilesAfterEnv": [
-			"<rootDir>/src/setup-test.js"
-		]
+		"setupFilesAfterEnv": []
 	},
 	"prettier": {
 		"bracketSpacing": true,

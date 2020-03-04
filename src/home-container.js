@@ -29,7 +29,6 @@ const Habilitation = ({
 	};
 
 	const handleSave = data => {
-		console.log(data);
 		const { toAdd, toDelete } = data;
 		let agentActions = [];
 		if (toAdd.length !== 0)

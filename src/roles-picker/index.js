@@ -8,10 +8,8 @@ export default function RolesPicker({
 	defaultOpen = false,
 	handleSubmit,
 }) {
-	console.log('rerender');
 	const [open, setOpen] = useState(defaultOpen);
 	const [userRoles, setUserRoles] = useState(person.roles);
-	console.log(userRoles);
 
 	const handleClick = useCallback(
 		e => {
@@ -64,11 +62,6 @@ export default function RolesPicker({
 					? userRoles.filter(label => label !== role.label)
 					: [...userRoles, role.label];
 
-				console.log(role.label);
-
-				console.log(userRoles);
-
-				console.log(newUserRoles);
 				setUserRoles(newUserRoles);
 			},
 			[userRoles]

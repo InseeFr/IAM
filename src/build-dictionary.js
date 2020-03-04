@@ -22,6 +22,18 @@ const dictionary = {
 		fr: 'Rôle',
 		en: 'Role',
 	},
+	save: {
+		fr: 'Valider',
+		en: 'Save',
+	},
+	manage: {
+		fr: 'Gérer',
+		en: 'Manage',
+	},
+	visualize: {
+		fr: 'Visualiser',
+		en: 'Visualize',
+	},
 };
 
 export const D1 = createDictionary(firstLang, dictionary);

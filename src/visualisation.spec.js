@@ -17,13 +17,23 @@ const roles = [
 	},
 ];
 
+const persons = [
+	{
+		id: '2',
+		label: 'plabel',
+		stamp: 'pstamp',
+	},
+];
+
 describe('administration-visualisation-roles', () => {
 	it('renders without crashing', () => {
-		render(<Visualisation roles={roles} />);
+		render(<Visualisation roles={roles} agents={persons} />);
 	});
 
 	it('should display a Table with the right data prop', () => {
-		const { container } = render(<Visualisation roles={roles} />);
+		const { container } = render(
+			<Visualisation roles={roles} agents={persons} />
+		);
 		expect(container.querySelector('tbody td:nth-child(1)').innerHTML).toBe(
 			'plabel'
 		);
@@ -36,7 +46,9 @@ describe('administration-visualisation-roles', () => {
 	});
 
 	it('should define an empty arry for roles when it is undefined', () => {
-		const { container } = render(<Visualisation roles={roles} />);
+		const { container } = render(
+			<Visualisation roles={roles} agents={persons} />
+		);
 		expect(container.querySelectorAll('tbody tr').length).toBe(1);
 	});
 });

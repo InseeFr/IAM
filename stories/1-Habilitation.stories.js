@@ -22,8 +22,29 @@ const loadAgentList = () =>
 			label: 'Karla Carson',
 		},
 	]);
+
+const fake = [];
+for (let i = 0; i < 10; i++) {
+	fake.push({
+		persons: [],
+		id: 'fake' + i,
+		label: 'admin ' + i,
+	});
+}
 const loadRoleList = () =>
 	Promise.resolve([
+		...fake,
+		{
+			persons: [
+				{
+					id: '5e2819217a606efe20f8aa44',
+					label: 'Deleon Atkins',
+					stamp: '1234',
+				},
+			],
+			id: '2',
+			label: 'admin2',
+		},
 		{
 			persons: [
 				{

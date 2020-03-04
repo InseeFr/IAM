@@ -82,7 +82,7 @@ export default function RolesPicker({
 				{roles.map(role => (
 					<li key={role.label}>
 						<input
-							onClick={handleRoleClick(role)}
+							onChange={handleRoleClick(role)}
 							type="checkbox"
 							checked={userRoles.indexOf(role.label) >= 0}
 						/>

@@ -18,7 +18,13 @@
 		"test-coverage": "jest --coverage",
 		"coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls",
 		"lint": "eslint src",
-		"prepublishOnly": "npm run test && npm run build"
+		"prepublishOnly": "npm run test && npm run build",
+		"pre-push": "yarn run test-coverage && yarn run lint"
+	},
+	"husky": {
+		"hooks": {
+			"pre-push": "yarn pre-push"
+		}
 	},
 	"files": [
 		"dist/*"
@@ -34,21 +40,28 @@
 		"@babel/preset-env": "^7.5.5",
 		"@storybook/addon-actions": "^5.3.14",
 		"@storybook/addon-docs": "^5.3.14",
+		"@storybook/addon-knobs": "^5.3.14",
 		"@storybook/addon-links": "^5.3.14",
 		"@storybook/addons": "^5.3.14",
-    "@storybook/addon-knobs": "^5.3.14",
 		"@storybook/react": "^5.3.14",
+		"@testing-library/jest-dom": "^5.1.1",
+		"@testing-library/react": "^9.4.1",
+		"babel-eslint": "^10.0.3",
 		"babel-loader": "^8.0.6",
 		"bootstrap": "^3.4.1",
 		"coveralls": "^3.0.9",
-		"enzyme": "^3.10.0",
-		"enzyme-adapter-react-16": "^1.14.0",
+		"eslint": "^6.8.0",
 		"eslint-config-prettier": "6.7.0",
+		"eslint-plugin-flowtype": "^4.6.0",
 		"eslint-config-react-app": "5.1.0",
 		"eslint-plugin-import": "2.19.1",
 		"eslint-plugin-jsx-a11y": "6.2.3",
 		"eslint-plugin-react": "7.17.0",
+		"eslint-plugin-react-hooks": "^2.3.0",
+		"husky": "^4.2.3",
+		"identity-obj-proxy": "^3.0.0",
 		"jest": "25.1.0",
+		"node-sass": "^4.13.1",
 		"react": "^16.12.0",
 		"react-is": "^16.12.0",
 		"rollup": "^1.31.1",
@@ -57,7 +70,8 @@
 		"rollup-plugin-node-builtins": "^2.1.2",
 		"rollup-plugin-node-resolve": "^5.2.0",
 		"rollup-plugin-postcss": "^2.0.6",
-		"rollup-plugin-replace": "^2.2.0"
+		"rollup-plugin-replace": "^2.2.0",
+		"sass-loader": "^8.0.2"
 	},
 	"dependencies": {
 		"@inseefr/wilco": "^0.0.2-rc10",
@@ -75,9 +89,7 @@
 		"transform": {
 			"^.+\\.js$": "babel-jest"
 		},
-		"setupFilesAfterEnv": [
-			"<rootDir>/src/setup-test.js"
-		]
+		"setupFilesAfterEnv": []
 	},
 	"prettier": {
 		"bracketSpacing": true,

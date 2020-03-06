@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Loading } from '@inseefr/wilco';
 import PropTypes from 'prop-types';
 import Visualisation from './visualisation';
-import Update from './update';
 import { extractIdRole } from './utils/agents';
 
 const Habilitation = ({
@@ -18,7 +17,6 @@ const Habilitation = ({
 	const [loading, setLoading] = useState(true);
 	const [deleteRequested, setDeleteRequested] = useState(false);
 	const [addRequested, setAddRequested] = useState(false);
-	const [update, setUpdate] = useState(false);
 
 	const handleAddAgent = agents => {
 		setAddRequested(true);
@@ -42,7 +40,6 @@ const Habilitation = ({
 				setRoles(roles);
 				setAddRequested(false);
 				setDeleteRequested(false);
-				setUpdate(false);
 			});
 		});
 	};
@@ -52,7 +49,7 @@ const Habilitation = ({
 			setRoles(roles);
 			setAgents(agents);
 			setLoading(false);
-		})
+		});
 	}, []);
 
 	if (loading) return <Loading />;
@@ -60,24 +57,13 @@ const Habilitation = ({
 
 	if (roles && agents) {
 		return (
-			<>
-				{update && (
-					<Update
-						roles={roles}
-						agents={agents}
-						handleSave={handleSave}
-						handleBack={() => setUpdate(false)}
-					/>
-				)}
-				{!update && (
-					<Visualisation
-						roles={roles}
-						handleUpdate={() => setUpdate(true)}
-						handleBack={handleBack}
-						displayUpdateBtn={displayUpdateBtn}
-					/>
-				)}
-			</>
+			<Visualisation
+				roles={roles}
+				handleBack={handleBack}
+				displayUpdateBtn={displayUpdateBtn}
+				agents={agents}
+				handleSave={handleSave}
+			/>
 		);
 	}
 	return <Loading />;

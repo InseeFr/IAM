@@ -45,19 +45,28 @@ function VisualisationTable({
 		});
 	}
 
-	const data = Object.values(persons).map(person => ({
-		...person,
-		roles:
-			mode === VIEW ? (
-				person.roles.join(',')
-			) : (
-				<RolesPicker
-					roles={roles}
-					person={person}
-					handleSubmit={handleSave}
-				></RolesPicker>
-			),
-	}));
+	const data = Object.values(persons)
+		.filter(person => {
+			return mode === EDIT || person.roles.length > 0;
+		})
+		.sort((p1, p2) => {
+			return (
+				p2.roles.length - p1.roles.length || p1.label.localeCompare(p2.label)
+			);
+		})
+		.map(person => ({
+			...person,
+			roles:
+				mode === VIEW ? (
+					person.roles.join(',')
+				) : (
+					<RolesPicker
+						roles={roles}
+						person={person}
+						handleSubmit={handleSave}
+					></RolesPicker>
+				),
+		}));
 
 	return (
 		<div className="container">

@@ -41,7 +41,9 @@ function VisualisationTable({
 
 	for (let i = 0; i < roles.length; i++) {
 		roles[i].persons.forEach(p => {
-			persons[p.id].roles.push(roles[i].label);
+			if (persons[p.id]) {
+				persons[p.id].roles.push(roles[i].label);
+			}
 		});
 	}
 

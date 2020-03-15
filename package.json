@@ -26,9 +26,7 @@
 			"pre-push": "yarn pre-push"
 		}
 	},
-	"files": [
-		"dist/*"
-	],
+	"files": ["dist", "lib", "src"] ,
 	"peerDependencies": {
 		"react": "^16.12.0"
 	},

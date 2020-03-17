@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Loading } from '@inseefr/wilco';
 import PropTypes from 'prop-types';
-import Visualisation from './visualisation';
+import Visualisation, { VIEW, EDIT } from './visualisation';
 import { extractIdRole } from './utils/agents';
 
 const Habilitation = ({
@@ -12,19 +12,16 @@ const Habilitation = ({
 	handleBack,
 	displayUpdateBtn,
 }) => {
+	const [mode, setMode] = useState(VIEW);
 	const [agents, setAgents] = useState([]);
 	const [roles, setRoles] = useState([]);
 	const [loading, setLoading] = useState(true);
-	const [deleteRequested, setDeleteRequested] = useState(false);
-	const [addRequested, setAddRequested] = useState(false);
 
 	const handleAddAgent = agents => {
-		setAddRequested(true);
 		return extractIdRole(agents).map(a => addAgent(a));
 	};
 
 	const handleDeleteAgent = agents => {
-		setDeleteRequested(true);
 		return agents.map(a => deleteAgent(a));
 	};
 
@@ -37,23 +34,35 @@ const Habilitation = ({
 			agentActions = [...agentActions, ...handleDeleteAgent(toDelete)];
 		Promise.all(agentActions).then(() => {
 			loadRoleList().then(roles => {
+				setMode(VIEW);
 				setRoles(roles);
-				setAddRequested(false);
-				setDeleteRequested(false);
 			});
 		});
 	};
 
 	useEffect(() => {
-		Promise.all([loadRoleList(), loadAgentList()]).then(([roles, agents]) => {
+		setLoading(true);
+		loadRoleList().then(roles => {
 			setRoles(roles);
-			setAgents(agents);
 			setLoading(false);
 		});
 	}, []);
 
+	useEffect(() => {
+		if (mode === EDIT && agents.length === 0) {
+			setLoading(true);
+			loadAgentList().then(agents => {
+				setAgents(agents);
+				setLoading(false);
+			});
+		}
+	}, [mode]);
+
+	const toggleMode = useCallback(() => {
+		setMode(mode === VIEW ? EDIT : VIEW);
+	}, [mode]);
+
 	if (loading) return <Loading />;
-	if (deleteRequested || addRequested) return <Loading textType="saving" />;
 
 	if (roles && agents) {
 		return (
@@ -63,6 +72,8 @@ const Habilitation = ({
 				displayUpdateBtn={displayUpdateBtn}
 				agents={agents}
 				handleSave={handleSave}
+				mode={mode}
+				toggleMode={toggleMode}
 			/>
 		);
 	}

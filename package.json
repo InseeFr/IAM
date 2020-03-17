@@ -1,6 +1,6 @@
 {
 	"name": "@inseefr/iam",
-	"version": "0.0.1-rc9",
+	"version": "0.0.1-rc10",
 	"main": "dist/index.js",
 	"source": "src/index.js",
 	"repository": {
@@ -26,7 +26,11 @@
 			"pre-push": "yarn pre-push"
 		}
 	},
-	"files": ["dist", "lib", "src"] ,
+	"files": [
+		"dist",
+		"lib",
+		"src"
+	],
 	"peerDependencies": {
 		"react": "^16.12.0"
 	},

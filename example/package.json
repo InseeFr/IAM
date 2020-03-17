@@ -1,0 +1,61 @@
+{
+	"name": "example",
+	"version": "0.1.0",
+	"description": "IAM example",
+	"author": "INSEE (http://www.insee.fr)",
+	"contributor": [
+		{
+			"name": "Nicolas Laval",
+			"email": "nicolas.laval@insee.fr"
+		}
+	],
+	"dependencies": {
+		"@inseefr/iam": "^0.0.1-rc10",
+		"@testing-library/jest-dom": "^4.2.4",
+		"@testing-library/react": "^9.3.2",
+		"@testing-library/user-event": "^7.1.2",
+		"bootstrap": "3.4.1",
+		"react": "^16.13.0",
+		"react-dom": "^16.13.0",
+		"react-scripts": "3.4.0"
+	},
+	"homepage": ".",
+	"scripts": {
+		"start": "react-scripts --expose-gc --max-old-space-size=8192 start",
+		"build": "react-scripts --expose-gc --max-old-space-size=8192 build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"eslint": "^6.8.0",
+		"eslint-config-airbnb": "^18.1.0",
+		"eslint-config-prettier": "^6.10.0",
+		"eslint-plugin-import": "^2.20.1",
+		"eslint-plugin-jsx-a11y": "^6.2.3",
+		"eslint-plugin-prettier": "^3.1.2",
+		"eslint-plugin-react": "^7.19.0",
+		"prettier": "^1.19.1"
+	},
+	"prettier": {
+		"singleQuote": true,
+		"semi": true,
+		"useTabs": true,
+		"bracketSpacing": true,
+		"trailingComma": "es5"
+	}
+}

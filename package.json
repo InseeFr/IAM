@@ -26,9 +26,7 @@
 			"pre-push": "yarn pre-push"
 		}
 	},
-	"files": [
-		"dist/*"
-	],
+	"files": ["dist", "lib", "src"] ,
 	"peerDependencies": {
 		"react": "^16.12.0"
 	},
@@ -74,7 +72,7 @@
 		"sass-loader": "^8.0.2"
 	},
 	"dependencies": {
-		"@inseefr/wilco": "^0.0.2-rc12",
+		"@inseefr/wilco": "^0.0.2-rc13",
 		"lodash": "^4.17.15",
 		"react-router-dom": "5.1.2"
 	},

@@ -1,6 +1,21 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import './roles-picker.scss';
 import D from '../build-dictionary';
+
+function useOutsideAlerter(ref, callback) {
+	function handleClickOutside(event) {
+		if (ref.current && !ref.current.contains(event.target)) {
+			callback();
+		}
+	}
+
+	useEffect(() => {
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, []);
+}
 
 export default function RolesPicker({
 	roles = [],
@@ -10,6 +25,8 @@ export default function RolesPicker({
 }) {
 	const [open, setOpen] = useState(defaultOpen);
 	const [userRoles, setUserRoles] = useState(person.roles);
+	const wrapperRef = useRef(null);
+	useOutsideAlerter(wrapperRef, () => setOpen(false));
 
 	const handleClick = useCallback(
 		e => {
@@ -67,7 +84,10 @@ export default function RolesPicker({
 			[userRoles]
 		);
 	return (
-		<div className={`iam-roles-picker btn-group ${open ? 'open' : ''}`}>
+		<div
+			ref={wrapperRef}
+			className={`iam-roles-picker btn-group ${open ? 'open' : ''}`}
+		>
 			<button
 				type="button"
 				className="btn btn-default dropdown-toggle"

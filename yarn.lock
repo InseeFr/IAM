@@ -1052,10 +1052,10 @@
   resolved "https://registry.npmjs.org/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
   integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
 
-"@inseefr/wilco@^0.0.2-rc11":
-  version "0.0.2-rc11"
-  resolved "https://registry.yarnpkg.com/@inseefr/wilco/-/wilco-0.0.2-rc11.tgz#cc62813eef5d2ed6663a8bab89cc5a1023beccdf"
-  integrity sha512-CsmUFGjHyldyPl8CoD6bYtoCtUHOMIx5lE/zWrzJMQ/WztOy5R3PoUQXqiijbmXpEFQV1HOFaEEaw7BffHOYLw==
+"@inseefr/wilco@^0.0.2-rc13":
+  version "0.0.2-rc13"
+  resolved "https://registry.npmjs.org/@inseefr/wilco/-/wilco-0.0.2-rc13.tgz#4f7898ed3a107fa4f68a4031e8fbfc5bf92ef082"
+  integrity sha512-CRD3m3OOBOt/a1GdEMHgtjmj6WzcwgvJutXsEVZkE/uq4wy9Nx3EoHFlCWBA8vfpvj5JhIL5vssrvzX3z9k76g==
   dependencies:
     lodash "^4.17.15"
     query-string "^6.9.0"

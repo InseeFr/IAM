@@ -5,8 +5,10 @@ import { agents, roles as initRoles } from './data/init';
 
 const App = () => {
 	const [roles, setRoles] = useState(initRoles);
+	const [loading, setLoading] = useState(false);
 
 	const handleAdd = ({ id, role }) => {
+		setLoading(true);
 		const newRoles = roles.reduce((acc, r) => {
 			if (r.id !== role) return [...acc, r];
 			const persons = [...r.persons, agents.find(a => a.id === id)];
@@ -16,6 +18,8 @@ const App = () => {
 	};
 
 	const handleDelete = ({ id, role }) => {
+		setLoading(true);
+
 		const newRoles = roles.reduce((acc, r) => {
 			if (r.id !== role) return [...acc, r];
 			const persons = r.persons.reduce((accP, p) => {
@@ -30,12 +34,21 @@ const App = () => {
 	return (
 		<>
 			<h1 className="centered">IAM example</h1>
-			<Habilitation
-				loadAgentList={API.loadAgentList}
-				loadRoleList={() => API.loadRoleList(roles)}
-				deleteAgent={a => handleDelete(a)}
-				addAgent={a => handleAdd(a)}
-			/>
+			{loading && <p>Loading</p>}
+			{!loading && (
+				<Habilitation
+					loadAgentList={API.loadAgentList}
+					loadRoleList={() =>
+						API.loadRoleList(roles).then(roles => {
+							setLoading(false);
+
+							return roles;
+						})
+					}
+					deleteAgent={a => handleDelete(a)}
+					addAgent={a => handleAdd(a)}
+				/>
+			)}
 		</>
 	);
 };

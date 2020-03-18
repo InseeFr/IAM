@@ -8,3 +8,7 @@ Access management module
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 [Storybook](https://inseefr.github.io/IAM) is available online.
+
+## Usage
+
+An example is deployed [online](https://inseefr.github.io/IAM/example).

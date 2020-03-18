@@ -81,7 +81,7 @@ const loadRoleList = () =>
 					},
 				])
 			);
-		}, 0)
+		}, 2000)
 	);
 
 export default {

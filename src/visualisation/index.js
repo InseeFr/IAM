@@ -8,6 +8,7 @@ import {
 } from '@inseefr/wilco';
 import D from '../build-dictionary';
 import RolesPicker from '../roles-picker';
+import './visualisation.scss';
 
 export const VIEW = 'VIEW';
 export const EDIT = 'EDIT';
@@ -90,7 +91,7 @@ function VisualisationTable({
 	}));
 
 	return (
-		<div className="container">
+		<div className="container iam-visualisation">
 			<ActionToolbar>
 				{handleBack ? <ReturnButton action={() => handleBack()} /> : <div />}
 				{mode === VIEW && displayUpdateBtn && (

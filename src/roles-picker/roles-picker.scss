@@ -1,21 +1,36 @@
+::-webkit-scrollbar {
+	width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.6);
+}
 .iam-roles-picker {
 	color: black;
-
+	width: 100%;
 	ul {
 		padding-bottom: 0;
 		border-bottom: 0;
-	}
 
-	li {
-		line-height: 2em;
-	}
+		li {
+			line-height: 2em;
+			padding-right: 5px;
 
-	input {
-		margin: 0.5em 0.5em 1em 1em;
+			&:last-child {
+				padding: 0;
+			}
+			input {
+				margin: 0.5em 0.5em 1em 1em;
+			}
+
+			button {
+				width: 100%;
+				margin: 0;
+			}
+		}
 	}
 
 	button {
-		width: 100%;
-		margin: 0;
+		width: 70%;
 	}
 }

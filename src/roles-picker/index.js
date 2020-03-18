@@ -4,7 +4,11 @@ import D from '../build-dictionary';
 
 function useOutsideAlerter(ref, callback) {
 	function handleClickOutside(event) {
-		if (ref.current && !ref.current.contains(event.target)) {
+		if (
+			ref.current &&
+			!ref.current.contains(event.target) &&
+			event.target.tagName !== 'HTML'
+		) {
 			callback();
 		}
 	}

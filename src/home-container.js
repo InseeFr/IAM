@@ -64,20 +64,19 @@ const Habilitation = ({
 
 	if (loading) return <Loading />;
 
-	if (roles && agents) {
-		return (
-			<Visualisation
-				roles={roles}
-				handleBack={handleBack}
-				displayUpdateBtn={displayUpdateBtn}
-				agents={agents}
-				handleSave={handleSave}
-				mode={mode}
-				toggleMode={toggleMode}
-			/>
-		);
-	}
-	return <Loading />;
+	const agentsProps = mode === EDIT ? agents : [];
+
+	return (
+		<Visualisation
+			roles={roles}
+			handleBack={handleBack}
+			displayUpdateBtn={displayUpdateBtn}
+			agents={agentsProps}
+			handleSave={handleSave}
+			mode={mode}
+			toggleMode={toggleMode}
+		/>
+	);
 };
 
 Habilitation.propTypes = {

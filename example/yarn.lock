@@ -1023,10 +1023,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@inseefr/iam@^0.0.1-rc11":
-  version "0.0.1-rc11"
-  resolved "https://registry.yarnpkg.com/@inseefr/iam/-/iam-0.0.1-rc11.tgz#3b5b7cbdbb043516f7329905aa6779f59092b438"
-  integrity sha512-65/dgBEvOC/OmuKAFnlNocLToMgQ/tWhK4yl4oRiGs6ip0+lHxTGvohYcGEkxkZZ8XtpzBflKUPTZjc3XTAwGQ==
+"@inseefr/iam@^0.0.1-rc12":
+  version "0.0.1-rc12"
+  resolved "https://registry.yarnpkg.com/@inseefr/iam/-/iam-0.0.1-rc12.tgz#cd6c91acdede4d920100aad36e954259e406d7ce"
+  integrity sha512-BRlyQBlCPdCbPKIFVZqZBeQXBIjvjrXuT/tmnP2YQPS99hB2/gz8DOuoAh644ZdVWBhYJgQOy9/zvu9bPV2pSg==
   dependencies:
     "@inseefr/wilco" "^0.0.2-rc13"
     lodash "^4.17.15"

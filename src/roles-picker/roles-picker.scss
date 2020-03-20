@@ -1,10 +1,3 @@
-::-webkit-scrollbar {
-	width: 15px;
-}
-
-::-webkit-scrollbar-thumb {
-	background: rgba(0, 0, 0, 0.6);
-}
 .iam-roles-picker {
 	color: black;
 	width: 100%;
@@ -22,7 +15,9 @@
 			input {
 				margin: 0.5em 0.5em 1em 1em;
 			}
-
+			label {
+				font-weight: normal;
+			}
 			button {
 				width: 100%;
 				margin: 0;

@@ -105,12 +105,14 @@ export default function RolesPicker({
 			<ul className="dropdown-menu">
 				{roles.map(role => (
 					<li key={role.label}>
-						<input
-							onChange={handleRoleClick(role)}
-							type="checkbox"
-							checked={userRoles.indexOf(role.label) >= 0}
-						/>
-						{role.label}
+						<label>
+							<input
+								onChange={handleRoleClick(role)}
+								type="checkbox"
+								checked={userRoles.indexOf(role.label) >= 0}
+							/>
+							{role.label}
+						</label>
 					</li>
 				))}
 

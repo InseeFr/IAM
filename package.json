@@ -83,7 +83,7 @@
 	"jest": {
 		"collectCoverageFrom": [
 			"src/**/*.{js,jsx}",
-			"!src/**/*.stories.js"
+			"!stories/**/*.js"
 		],
 		"moduleNameMapper": {
 			"^.+\\.(css|less|scss)$": "identity-obj-proxy"
@@ -95,8 +95,7 @@
 		"collectCoverage": true,
 		"testResultsProcessor": "jest-sonar-reporter",
 		"coveragePathIgnorePatterns": [
-			"/node_modules/",
-			"/test/"
+			"/node_modules/"
 		]
 	},
 	"prettier": {

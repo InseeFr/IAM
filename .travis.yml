@@ -9,5 +9,6 @@ install:
   - yarn install
 script:
   - yarn test-coverage
+  - sonar-scanner
 after_script:
   - bash scripts/deploy.sh

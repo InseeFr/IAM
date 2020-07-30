@@ -29,3 +29,8 @@ export const transformASIFromIgesa = (label = 'ASI group label') => (
 		},
 	];
 };
+
+export const transformAgentsFromIgesa = agents =>
+	Array.isArray(agents)
+		? agents.map(({ uid, cn }) => ({ id: uid, label: cn }))
+		: [];

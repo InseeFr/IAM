@@ -33,11 +33,13 @@ describe('roles picker', () => {
 
 	it('should display lis element for each role', () => {
 		const { container } = render(<RolesPicker roles={roles} person={person} />);
+		fireEvent.click(container.querySelector('div button'));
 		expect(container.querySelectorAll('li')).toHaveLength(3);
 	});
 
 	it('should display checkboxes with the right state element for each role', () => {
 		const { container } = render(<RolesPicker roles={roles} person={person} />);
+		fireEvent.click(container.querySelector('div button'));
 		expect(
 			container.querySelectorAll('li:first-child input:checked')
 		).toHaveLength(1);
@@ -51,6 +53,7 @@ describe('roles picker', () => {
 		const { container } = render(
 			<RolesPicker roles={roles} person={person} handleSubmit={handleSubmit} />
 		);
+		fireEvent.click(container.querySelector('div button'));
 		fireEvent.click(container.querySelector('li button'));
 		expect(handleSubmit).toHaveBeenCalledWith({
 			toAdd: [],
@@ -63,6 +66,7 @@ describe('roles picker', () => {
 		const { container } = render(
 			<RolesPicker roles={roles} person={person} handleSubmit={handleSubmit} />
 		);
+		fireEvent.click(container.querySelector('div button'));
 		fireEvent.click(container.querySelector('li:nth-child(2) input'));
 		fireEvent.click(container.querySelector('li button'));
 
@@ -82,6 +86,7 @@ describe('roles picker', () => {
 		const { container } = render(
 			<RolesPicker roles={roles} person={person} handleSubmit={handleSubmit} />
 		);
+		fireEvent.click(container.querySelector('div button'));
 		fireEvent.click(container.querySelector('li:first-child input'));
 		fireEvent.click(container.querySelector('li button'));
 
@@ -98,10 +103,10 @@ describe('roles picker', () => {
 
 	it('should close the dropdown after validing the form', () => {
 		const handleSubmit = jest.fn();
-
 		const { container } = render(
 			<RolesPicker roles={roles} person={person} handleSubmit={handleSubmit} />
 		);
+
 		expect(container.querySelector('.open')).toBeDefined();
 		fireEvent.click(container.querySelector('button'));
 

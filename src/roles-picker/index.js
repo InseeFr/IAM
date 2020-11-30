@@ -85,7 +85,7 @@ export default function RolesPicker({
 					setOpen(!open);
 				}}
 			>
-				{D.manage} <span className="caret"></span>
+				{D.manage}
 			</button>
 			{open && (
 				<ul className="dropdown-menu show">

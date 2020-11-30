@@ -4,7 +4,6 @@ set -e
 
 STORYBOOK_FOLDER="storybook-static"
 SITE_FOLDER="website"
-EXAMPLE_FOLDER="example"
 
 MAIN_BRANCH="master"
 UPSTREAM="https://$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG.git"
@@ -25,13 +24,6 @@ function buildStoryBook(){
   npm run build-storybook
 }
 
-function buildExample(){
-  cd example
-  npm install
-  npm run build
-  cd ..
-}
-
 function publish() {
   if [ -d "$SITE_FOLDER" ]; then rm -Rf $SITE_FOLDER; fi
 
@@ -39,8 +31,6 @@ function publish() {
   pushd "$SITE_FOLDER"
 
   cp -R "../$STORYBOOK_FOLDER/." .
-  cp -R "../$EXAMPLE_FOLDER/." .
-  mv "build" "example"
 
   git init
   git remote add upstream "$UPSTREAM"
@@ -54,7 +44,7 @@ function publish() {
 }
 
 function main() {
-  buildStoryBook && buildExample && publish
+  buildStoryBook && publish
 }
 
 main

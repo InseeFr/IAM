@@ -22,6 +22,7 @@ const rowParams = [
 	},
 	{ dataField: 'stamp', text: D.stampTitle, width: '30%', sort: true },
 	{ dataField: 'roles', text: D.roleTitle, width: '30%', sort: true },
+	{ dataField: 'originalRoles', text: D.roleTitle, width: '30%', style: { backgroundColor: 'green' } },
 ];
 
 function VisualisationTable({
@@ -72,8 +73,9 @@ function VisualisationTable({
 
 	const sortPersons = (p1, p2) => p1.label.localeCompare(p2.label);
 
-	const data = persons.map(person => ({
+	const data = persons.map((person, i) => ({
 		...person,
+		originalRoles: person.roles.join(" "),
 		roles:
 			mode === VIEW ? (
 				<ul>

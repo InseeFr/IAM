@@ -22,7 +22,7 @@ const rowParams = [
 	},
 	{ dataField: 'stamp', text: D.stampTitle, width: '30%', sort: true },
 	{ dataField: 'roles', text: D.roleTitle, width: '30%', sort: true },
-	{ dataField: 'originalRoles', text: D.roleTitle, width: '30%', style: { backgroundColor: 'green' } },
+	{ dataField: 'originalRoles', text: D.roleTitle, width: '30%' },
 ];
 
 function VisualisationTable({

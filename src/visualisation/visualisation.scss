@@ -1,3 +1,9 @@
 .iam-visualisation tbody tr td:last-child {
 	text-align: left !important;
 }
+
+
+.iam-visualisation tr th:nth-child(4),
+.iam-visualisation tr td:nth-child(4){
+	display: none;
+}

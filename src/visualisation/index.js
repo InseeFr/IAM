@@ -92,7 +92,7 @@ function VisualisationTable({
 				></RolesPicker>
 			),
 	}));
-	console.log(data, roles)
+
 	return (
 		<div className="container iam-visualisation">
 			<ActionToolbar>

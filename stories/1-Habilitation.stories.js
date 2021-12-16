@@ -3,6 +3,7 @@ import Habilitation from '../src/home-container';
 import { MemoryRouter } from 'react-router-dom';
 import { boolean } from '@storybook/addon-knobs';
 import { transformRoleFromIgesa } from '../src/utils/transform';
+import D from "../src/build-dictionary";
 const loadAgentList = () => {
 	return new Promise(resolve => {
 		setTimeout(() => {
@@ -73,6 +74,7 @@ const loadRoleList = () =>
 										uid: '5e28192123962f88ad7ab1a7',
 										cn: 'Aang Asborne',
 										ou: 'TEST',
+										custom: "Custom"
 									},
 								],
 							},
@@ -117,4 +119,30 @@ export const WithHandleBack = () => (
 
 WithHandleBack.story = {
 	title: 'WithHandleBack',
+};
+
+const columnConfigurations = [
+	{ dataField: 'custom', text: "Custom Property", width: '30%', sort: true },
+	{
+		dataField: 'label',
+		text: D.nameTitle,
+		width: '40%',
+		sort: true,
+	},
+	{ dataField: 'stamp', text: D.stampTitle, width: '30%', sort: true },
+	{ dataField: 'originalRoles', text: D.roleTitle, width: '30%' },
+];
+export const WithCustomColumnConfiguration = () => (
+	<MemoryRouter>
+		<Habilitation
+			loadRoleList={loadRoleList}
+			loadAgentList={loadAgentList}
+			displayUpdateBtn={boolean('Display update button', true)}
+			columnConfigurations={columnConfigurations}
+		/>
+	</MemoryRouter>
+);
+
+WithCustomColumnConfiguration.story = {
+	title: 'With custom column Configuration',
 };

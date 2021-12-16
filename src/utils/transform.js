@@ -3,10 +3,11 @@ export const transformRoleFromIgesa = (array = []) =>
 		? array[0].groupes.map(({ cn, description, personnes: persons }) => ({
 				id: cn,
 				label: description,
-				persons: persons.map(({ cn: label, uid: id, ou: stamp }) => ({
+				persons: persons.map(({ cn: label, uid: id, ou: stamp, ...rest }) => ({
 					id,
 					label,
 					stamp,
+					...rest,
 				})),
 		  }))
 		: [];

@@ -13,7 +13,7 @@ import './visualisation.scss';
 export const VIEW = 'VIEW';
 export const EDIT = 'EDIT';
 
-const rowParams = [
+const defaultRowParams = [
 	{
 		dataField: 'label',
 		text: D.nameTitle,
@@ -33,6 +33,7 @@ function VisualisationTable({
 	handleSave,
 	mode = VIEW,
 	toggleMode,
+	rowParams = defaultRowParams
 }) {
 	const [personsWithRoles, setPersonsWithRoles] = useState([]);
 	const [personsWithoutRoles, setPersonsWithoutRoles] = useState([]);

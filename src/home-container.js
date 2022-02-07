@@ -11,6 +11,7 @@ const Habilitation = ({
 	loadAgentList,
 	handleBack,
 	displayUpdateBtn,
+	columnConfigurations
 }) => {
 	const [mode, setMode] = useState(VIEW);
 	const [agents, setAgents] = useState([]);
@@ -75,18 +76,19 @@ const Habilitation = ({
 			handleSave={handleSave}
 			mode={mode}
 			toggleMode={toggleMode}
+			rowParams={columnConfigurations}
 		/>
 	);
 };
 
 Habilitation.propTypes = {
 	/**
-	  Function returin a Promise. When this promise 
+	  Function returin a Promise. When this promise
 	  is resolved, will return the list of agents.
     */
 	loadAgentList: PropTypes.func.isRequired,
 	/**
-	  Function returin a Promise. When this promise 
+	  Function returin a Promise. When this promise
 	  is resolved, will return the list of roles.
     */
 	loadRoleList: PropTypes.func.isRequired,
